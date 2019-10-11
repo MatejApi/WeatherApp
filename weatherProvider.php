@@ -2,7 +2,9 @@
 
 class WeatherProvider{
     
-    protected $timee;
+    public $currentTime;
+
+    // Get api data from url
 
     public function curlQuery($url) {
         $ch = curl_init();
@@ -16,8 +18,8 @@ class WeatherProvider{
         curl_close($ch);
   
         $array = json_decode($jsonss);
-        $timee = intval($array->main->temp);
-        echo $timee;
+        $apiTime = intval($array->main->temp);
+        $this->currentTime = $apiTime;
         return;
         }
 
